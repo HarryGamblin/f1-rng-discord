@@ -3,6 +3,14 @@ name: int-tests
 on:
   pull_request:
     branches: main
+  workflow_dispatch:
+    inputs:
+      string_to_print:
+        description: "Enter string to print"
+        type: string
+        required: false
+        default: ''
+
 
 jobs:
   print-hello:
@@ -11,4 +19,10 @@ jobs:
       - name: test
         id: print-test
         run: | 
-          echo "this is a test!"
+          if [ ${{ inputs.string_to_print }} == '' ]; then
+            echo "You entered: ${{ inputs.string_to_print }}"
+          elif [ ${{ github.event }} == "pull_request" ]; then
+            echo "This is a pull request!"
+          else
+            echo "you done messed up"
+          fi
