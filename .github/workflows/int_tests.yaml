@@ -1,0 +1,14 @@
+name: int-tests
+
+on:
+  pull_request:
+    branches: main
+
+jobs:
+  print-hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        id: print-test
+        run: | 
+          echo "this is a test!"
