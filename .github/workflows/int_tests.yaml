@@ -21,7 +21,7 @@ jobs:
         run: | 
           if [ ${{ inputs.string_to_print }} != '' ]; then
             echo "You entered: ${{ inputs.string_to_print }}"
-          elif [ ${{ github.event }} == "pull_request" ]; then
+          elif [ ${{ github.event_name }} == "pull_request" ]; then
             echo "This is a pull request!"
           else
             echo "you done messed up"
