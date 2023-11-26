@@ -19,7 +19,7 @@ jobs:
       - name: test
         id: print-test
         run: | 
-          if [ ${{ inputs.string_to_print }} == '' ]; then
+          if [ ${{ inputs.string_to_print }} != '' ]; then
             echo "You entered: ${{ inputs.string_to_print }}"
           elif [ ${{ github.event }} == "pull_request" ]; then
             echo "This is a pull request!"
