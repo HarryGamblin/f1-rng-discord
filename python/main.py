@@ -1,5 +1,5 @@
 import discord
-import gsheets_functions
+from google_sheets import user_in_sheet
 from constants import MESSAGE_PREFIX
 
 intents = discord.Intents.default()
@@ -12,6 +12,8 @@ async def on_ready():
     print(f"Logged in as {client.user}")
 
 @client.event
-async def on_message(message):
-    if message.content.startswith(MESSAGE_PREFIX):
+async def on_message(message: discord.Message):
+    if not message.content.startswith(MESSAGE_PREFIX):
         pass
+    if not user_in_sheet(client=client, user=message.author):
+        print("User not found in sheet. Adding now.")
