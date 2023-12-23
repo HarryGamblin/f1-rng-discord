@@ -19,6 +19,14 @@ jobs:
         with:
           python-version: 3.12
 
+      - name: Install & configure Poetry
+        uses: snok/install-poetry@v1
+        with:
+          version: 1.5.1
+          virtualenvs-create: true
+          virtualenvs-in-project: false
+          installer-parallel: true
+
       - name: Run Pytest
         run: |
           poetry run pytest
