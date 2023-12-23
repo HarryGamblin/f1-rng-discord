@@ -12,7 +12,7 @@ async def on_ready():
     print(f"Logged in as {client.user}")
 
 @client.event
-async def on_message(message: discord.Message):
+async def on_message(message: discord.Message) -> None:
     if not message.content.startswith(MESSAGE_PREFIX):
         pass
     if not user_in_sheet(client=client, user=message.author):
